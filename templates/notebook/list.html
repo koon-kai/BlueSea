@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+	  
+	  <div class="row">
+	  <!--
+    {% for markitem in markitems %}
+	  
+	  <div class="span2">
+      <h4> <a href="/bookmark_detail/{{markitem.id}}">{{ markitem.name }}</a></h4>
+      <p>
+	  	-->
+        <!--{{ markitem.create_date|datetimeformat }} |-->
+		  <!--
+		{{ markitem.bookmark_count }} |
+		<a  href="/del_markitem/{{markitem.id}}">del</a>
+      </p>
+	  </div>
+	 
+    {% endfor %}
+	-->
+	   <a  href="/notebook/add"><button class="btn btn-large btn-block" type="button">Add A New Note</button></a>
+	   <br>
+	   <table class="table table-striped">              
+              <tbody>
+			    {% for note in notes %}
+                <tr>
+                  <td><i class="icon-star"></i></td>
+                  <td>{{ note.title }}</td>
+                  <td>{{ note.create_date|datetimeformat }}</td>
+                  <td>
+				     <a  href="/notebook/del/{{note.id}}"><i class="icon-trash"></i></a> | 
+					 <a href="/notebook/edit/{{note.id}}"><i class="icon-edit"></i></a>
+				  </td>
+                </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+	  </div>
+	</div>
+	
+{% endblock %}

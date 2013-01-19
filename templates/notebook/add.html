@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+ 
+   <div class="">
+      <form class="form-horizontal" method="post" action="/notebook/add">
+	   <div class="control-group">
+      <p>
+        <input class="input-block-level" type="text"  name="note[title]" size="300">
+      </p>
+	  </div>
+	   <div class="control-group">
+      <textarea class="input-block-level" name="note[content]" rows="20" ></textarea>
+      </div>
+      <div class="control-group">    
+         <button id="submit" class="btn" type="submit">Submit</button>	  
+         <button id="submit" class="btn" type="submit">return</button>
+      </div>
+     </form>
+   </div> 
+ 
+{% endblock %}

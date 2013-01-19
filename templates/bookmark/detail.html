@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+  <div class="page-header">
+    <h2>{{ markitem.name }}</h2>
+  </div>
+{% endblock %}
+
+{% block content %}
+  {% for bookmark in bookmarks %}
+      <h4><a href="{{ bookmark.url}}" target="_blank">{{ bookmark.title }}</a></h4>
+      <p>
+        {{ bookmark.create_date|datetimeformat }} | 
+		<a href="/del_bookmark/{{bookmark.id}}/{{markitem.id}}">del</a>
+      </p>
+    {% endfor %}
+  <hr>
+  <h4>Add a BookMark</h4>
+  <form action="/add_bookmark/{{markitem.id}}" method="post">
+    <dl>
+      <dt>Title:
+      <dd><input type=text name=title size=30>
+      <dt>Url:
+      <dd><input type=text name=url size=100>
+    </dl>
+    <div>
+      <input type="submit" class="btn primary" value="Save"><a href="/" class="btn btn-link">Return</a>
+    </div>
+  </form>
+{% endblock %}

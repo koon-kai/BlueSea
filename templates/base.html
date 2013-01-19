@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Welcome{% endblock %} | BlueSea.</title>
+	<!--
+    <link href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.css" rel="stylesheet">
+	-->
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="/static/css/backtop.css" charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css" charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="/static/css/mediaelementplayer.min.css" charset="utf-8"/>
+    <style>.content {padding-top: 80px;}</style>
+  </head>
+  <body>
+    {%- block topbar -%}
+    
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">BlueSea</a>
+          <div class="nav-collapse collapse">
+		    {% if g.user %}
+		
+		    <p class="navbar-text pull-right">
+                 <a href="/logout" class="btn btn-link">Sign out</a>
+            </p>
+	
+			{% endif %}
+            <ul class="nav">
+              <li class=""><a href="/">BookMark</a></li>
+			  <li class=""><a href="/">Todo</a></li>
+			  <li class=""><a href="/">Account</a></li>
+			  <li class=""><a href="/notebook">Note</a></li>
+			  <!--
+			  <li class=""><a href="/">Blog</a></li>
+			  <li class=""><a href="/">TimeAgain</a></li>
+			  <li class=""><a href="/">I See You</a></li>
+			  -->
+			  <li class=""><a href="/lovesong">LoveSong</a></li>
+			  
+            </ul>
+			<!--
+			<ul class="nav pull-right">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Separated link</a></li>
+                   </ul>
+              </li>
+            </ul>
+		   -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%- endblock -%}
+    <div class="container">
+      <div class="content">
+        {% block page_header %}{% endblock %}
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+	<div class="backToTop" title="返回顶部" style="display: block;" onclick="backtop()">返回顶部</div>
+    <footer>
+      {% block footer %}
+	  <!--
+      <div class="wrapper">
+	    <hr>
+        <p class="copyright">Designed by <a href="http://www.hear4me.sinaapp.com" target="_blank">koonkai</a>. Powered by <a href="http://flask.pocoo.org/">Flask</a>
+		<span style="margin-left:600px"><a href="/admin/">ADMIN</a></span>
+		</p>
+      </div>
+	  -->
+      {% endblock %}
+    </footer>
+    <script src="/static/js/backtop.js"></script>
+	<script src="/static/js/jquery-1.6.1.min.js"></script>
+	<script src="/static/js/bootstrap.js"></script>
+	<!--<script src="/static/js/bootstrap-dropdown.js"></script>-->
+    {% block script %}{% endblock %}
+  </body>
+</html>
